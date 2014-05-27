@@ -65,6 +65,22 @@ LZMAWrapper.Compress(new Uint8Array(stringToUtf8ByteArray('string-to-compress...
 LZMAWrapper.Decompress(LZMAData,function(DecompressedByteArray){ console.log(utf8ByteArrayToString(DecompressedByteArray)) });
 ```
 
+### .Compress() synopsis
+
+LZMAWrapper.Compress(DataAsStringOrUint8Array,CompressLevelAsInt,CallBackFunction);
+
+CompressLevelAsInt can be a 1-9 integer for compression level. More info in lzma.worker.js at option_mapping var declaration and LZMA-SDK.
+
+
+### .Decompress() synopsis
+
+LZMAWrapper.Decompress(DataAsStringOrUint8Array,CallBackFunction);
+
+
+### Missing
+
+Error handling: an error callback function support could be implemented.
+
 
 ## References
 
