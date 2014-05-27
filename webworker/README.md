@@ -5,13 +5,17 @@ This port has been built by assembling different libraries from lzma-purejs proj
 Files:
 
 lzma.js
+
 Implements the LZMA wrapper class that initializes WebWorker and manage compression/decompression requests.
 
 lzma.worker.js
+
 Includes LZMA implementation from lzma-purejs project and browser-buffer to enable browser support.
 
 utf8.conv.js
+
 Includes stringToUtf8ByteArray() and utf8ByteArrayToString() from Google Closure library for string encoding to/from UTF8 byte array.
+
 
 ## lzma.worker.js structure
 
@@ -20,7 +24,7 @@ Includes stringToUtf8ByteArray() and utf8ByteArrayToString() from Google Closure
 
 Add lzma.js and utf8.conv.js libraries into your app.
 
-```
+```html
 <script src="/path/to/lzma.js"></script>
 <script src="/path/to/utf8.conv.js"></script>
 ```
@@ -29,9 +33,10 @@ Copy (and minify) lzma.worker.js somewhere on your server.
 
 Modify lzma.js to fine-tune namespaces and string-bytearray encoding (if you need it).
 
+
 ## How to use
 
-```
+```javascript
 var LZMAWrapper = new LZMA('/path/to/lzma.worker.js');
 var LZMAData = null;
 LZMAWrapper.Compress('string-to-compress...',3,function(CompressedByteArray){ LZMAData = CompressedByteArray; });
@@ -42,10 +47,13 @@ LZMAWrapper.Compress(new Uint8Array(stringToUtf8ByteArray('string-to-compress...
 LZMAWrapper.Decompress(LZMAData,function(DecompressedByteArray){ console.log(utf8ByteArrayToString(DecompressedByteArray)) });
 ```
 
+
 ## References
 
 lzma-purejs - https://github.com/cscott/lzma-purejs
+
 Google Closure library (for UTF8Array[] <> string encoding) - https://github.com/google/closure-library
+
 browser-buffer - https://github.com/arextar/browser-buffer
 
 
