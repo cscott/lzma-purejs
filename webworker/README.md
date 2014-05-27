@@ -2,22 +2,40 @@
 
 This port has been built by assembling different libraries from lzma-purejs projectand others.
 
-Files:
 
-lzma.js
+## Files
+
+__lzma.js__
 
 Implements the LZMA wrapper class that initializes WebWorker and manage compression/decompression requests.
 
-lzma.worker.js
+__lzma.worker.js__
 
 Includes LZMA implementation from lzma-purejs project and browser-buffer to enable browser support.
 
-utf8.conv.js
+__utf8.conv.js__
 
 Includes stringToUtf8ByteArray() and utf8ByteArrayToString() from Google Closure library for string encoding to/from UTF8 byte array.
 
 
 ## lzma.worker.js structure
+
+* webworker related stuff
+* lib/makeBuffer.js
+* lib/LZ/InWindow.js
+* lib/LZ/OutWindow.js
+* lib/LZ/BinTree.js
+* lib/RangeCoder/Encoder.js
+* lib/RangeCoder/BitTreeDecoder.js
+* lib/RangeCoder/BitTreeEncoder.js
+* lib/RangeCoder/Decoder.js
+* lib/LZMA/Base.js
+* lib/LZMA/Decoder.js
+* lib/LZMA/Encoder.js
+* lib/Stream.js
+* lib/Util.js
+* lib/makeBuffer.js
+* https://github.com/marcominetti/browser-buffer/blob/master/src/browser-buffer.js (forked from https://github.com/arextar/browser-buffer)
 
 
 ## How to install
