@@ -17,16 +17,18 @@ describe('lzma file decode', function(){
 
 describe('lzma file encode->decode', function(){
   ['sample0', 'sample1', 'sample2', 'sample3', 'sample4'].forEach(function(f) {
-      it('encoded '+f+' should correctly decode', function() {
-          var referenceData = fs.readFileSync('test/'+f+'.ref');
-          var data = lzmajs.compressFile(referenceData);
-          // convert to buffer
-          data = new Buffer(data);
-          // round trip
-          var data2 = lzmajs.decompressFile(data);
-          // convert to buffer
-          data2 = new Buffer(data2);
-          assert.equal(referenceData.toString('hex'), data2.toString('hex'));
+      [1, 6, 9].forEach(function(compressionLevel) {
+          it('encoded '+f+' should correctly decode with compressionLevel = '+compressionLevel, function() {
+              var referenceData = fs.readFileSync('test/'+f+'.ref');
+              var data = lzmajs.compressFile(referenceData, null, compressionLevel);
+              // convert to buffer
+              data = new Buffer(data);
+              // round trip
+              var data2 = lzmajs.decompressFile(data);
+              // convert to buffer
+              data2 = new Buffer(data2);
+              assert.equal(referenceData.toString('hex'), data2.toString('hex'));
+          });
       });
   });
 });
